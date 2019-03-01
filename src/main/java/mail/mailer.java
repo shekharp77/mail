@@ -60,7 +60,10 @@ public class mailer {
                  message.setFrom(new InternetAddress(user,name));
                  message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
                  message.setSubject(subject);
-                 message.setText(msg);
+		  message.setContent(
+              		"<h1>This is actual message embedded in HTML tags by +name+ " : "+msg</h1>",
+             		"text/html");
+                 //message.setText(msg);
                  transport.sendMessage(message, message.getAllRecipients());
 
              } catch (MessagingException e) {
