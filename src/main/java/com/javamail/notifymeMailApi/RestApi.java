@@ -1,6 +1,7 @@
 package com.javamail.notifymeMailApi;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Paths;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,7 +52,8 @@ public class RestApi {
             @RequestParam("url") String url
     ) {
         try {
-            Mailer.sendMessageWithFile(recipient, subject, msg, name, url);
+            String file =  Paths.get(".", "src/main/resources",url ).normalize().toFile().toString();
+            Mailer.sendMessageWithFile(recipient, subject, msg, name, file);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -66,7 +68,8 @@ public class RestApi {
             @RequestParam("name") String name,
             @RequestParam("url") String url
     ){
-        Mailer.sendOnlyFile(recipient, subject, name, url);
+        String file =  Paths.get(".", "src/main/resources",url ).normalize().toFile().toString();
+        Mailer.sendOnlyFile(recipient, subject, name, file);
         return true;
     }
 
