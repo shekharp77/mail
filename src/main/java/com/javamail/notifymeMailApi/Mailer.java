@@ -58,9 +58,9 @@ public class Mailer {
             message.setFrom(new InternetAddress(user,name));
             message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
             message.setSubject(subject);
-//            message.setContent(
-//                    "<h1>This is actual message embedded in HTML tags by "+name+ " : "+msg+"</h1>",
-//                    "text/html");
+            message.setContent(
+                    "<h1>This is actual message embedded in HTML tags by "+name+ " : "+msg+"</h1>",
+                    "text/html");
             message.setText(msg);
             transport.sendMessage(message, message.getAllRecipients());
 
@@ -109,8 +109,22 @@ public class Mailer {
         }
     }
 
-    public static void sendHtml(String to,String subject,String msg, String name, String html) {
+    public static void sendHtml(String to,String subject,String msg, String name, String htmltemplate) {
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(user,name));
+            message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
+            message.setSubject(subject);
+            message.setContent(htmltemplate,
+                    "text/html");
+            transport.sendMessage(message, message.getAllRecipients());
 
+        } catch (MessagingException e) {
+            System.out.print(e);
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void sendOnlyFile(String to,String subject,String msg, String name, String html) {
