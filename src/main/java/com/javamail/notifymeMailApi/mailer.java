@@ -19,14 +19,11 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class mailer {
-    static String user;
-    static String pass;
-    static String name;
     static Transport transport;
     static Session session;
 
     //Connecting to Server
-    public static void connect() throws MessagingException{
+    public static void connect(String user, String pass) throws MessagingException{
 
         java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
         //1st step) Get the session object
@@ -52,7 +49,7 @@ public class mailer {
     }
 
     // To send a mail just call this method with classname because it is a static method e.g. Mailer.send("to","subject","message");
-    public static void send(String to,String subject,String msg) throws UnsupportedEncodingException{
+    public static void send(String to,String subject,String msg, String name) throws UnsupportedEncodingException{
 
         //2nd step)compose message
         try {
@@ -77,7 +74,7 @@ public class mailer {
 
 
     // To send a mail just call this method with classname because it is a static method e.g. Mailer.send("to","subject","message");
-    public static void send(String to,String subject,String msg,String url) throws UnsupportedEncodingException{
+    public static void send(String to,String subject,String msg, String name, String url) throws UnsupportedEncodingException{
 
 
         try {
