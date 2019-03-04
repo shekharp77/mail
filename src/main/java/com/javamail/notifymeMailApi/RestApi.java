@@ -9,28 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestApi {
-//    //retrieveProfile API Url
-//    @CrossOrigin
-//    @RequestMapping(value ="/signinmail", method = RequestMethod.GET, produces = "application/json")
-//    public boolean sign(
-//            @RequestParam("username") String username,
-//            @RequestParam("password") String password,
-//            @RequestParam("name") String name
-//    ) {
-//        Mailer.user = username;
-//        Mailer.pass = password;
-//        Mailer.name = name;
-//        try {
-//            Mailer.connect();
-//        } catch (MessagingException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//            return false;
-//        }
-//        System.out.println("credentials "+username+" "+password+" "+name);
-//        return true;
-//    }
-
 
     @CrossOrigin
     @RequestMapping(value ="/sendmail", method = RequestMethod.POST, produces = "application/json")
