@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RestApi {
 
     @CrossOrigin
-    @RequestMapping(value ="/sendmail", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value ="/sendmail/message", method = RequestMethod.POST, produces = "application/json")
     public boolean sendMessage(
             @RequestParam("recipient") String recipient,
             @RequestParam("sub") String subject,
@@ -28,10 +28,16 @@ public class RestApi {
         return true;
     }
 
-    //public boolean sendHtml(){}
+    @CrossOrigin
+    @RequestMapping(value ="/sendmail/html", method = RequestMethod.POST, produces = "application/json")
+    public boolean sendHtml(){}
 
-   // public boolean sendMessageWithFile() {}
+    @CrossOrigin
+    @RequestMapping(value ="/sendmail/message/file", method = RequestMethod.POST, produces = "application/json")
+    public boolean sendMessageWithFile() {}
 
-    //public boolean sendFile(){}
+    @CrossOrigin
+    @RequestMapping(value ="/sendmail/file", method = RequestMethod.POST, produces = "application/json")
+    public boolean sendFile(){}
 }
 
