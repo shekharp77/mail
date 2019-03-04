@@ -43,10 +43,31 @@ public class RestApi {
 
     @CrossOrigin
     @RequestMapping(value ="/sendmail/message/file", method = RequestMethod.POST, produces = "application/json")
-    public boolean sendMessageWithFile() {}
+    public boolean sendMessageWithFile(
+            @RequestParam("recipient") String recipient,
+            @RequestParam("sub") String subject,
+            @RequestParam("msg") String msg,
+            @RequestParam("name") String name,
+            @RequestParam("url") String url
+    ) {
+        try {
+            Mailer.sendMessageWithFile(recipient, subject, msg, name, url);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
 
     @CrossOrigin
     @RequestMapping(value ="/sendmail/file", method = RequestMethod.POST, produces = "application/json")
-    public boolean sendFile(){}
+    public boolean sendOnlyFile(
+            @RequestParam("recipient") String recipient,
+            @RequestParam("sub") String subject,
+            @RequestParam("name") String name,
+            @RequestParam("url") String url
+    ){
+        Mailer.sendOnlyFile(recipient, subject, name, url);
+        return true;
+    }
 }
 
