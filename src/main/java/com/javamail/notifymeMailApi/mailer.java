@@ -19,11 +19,13 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class mailer {
+    static String user;
     static Transport transport;
     static Session session;
 
     //Connecting to Server
-    public static void connect(String user, String pass) throws MessagingException{
+    public static void connect(String username, String pass) throws MessagingException{
+        user = username;
 
         java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
         //1st step) Get the session object
