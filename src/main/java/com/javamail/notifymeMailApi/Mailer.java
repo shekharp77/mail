@@ -50,7 +50,7 @@ public class Mailer {
     }
 
     // To send a mail just call this method with classname because it is a static method e.g. Mailer.send("to","subject","message");
-    public static void send(String to,String subject,String msg, String name) throws UnsupportedEncodingException{
+    public static void sendMessage(String to,String subject,String msg, String name) throws UnsupportedEncodingException{
 
         //2nd step)compose message
         try {
@@ -58,10 +58,10 @@ public class Mailer {
             message.setFrom(new InternetAddress(user,name));
             message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
             message.setSubject(subject);
-            message.setContent(
-                    "<h1>This is actual message embedded in HTML tags by "+name+ " : "+msg+"</h1>",
-                    "text/html");
-            //message.setText(msg);
+//            message.setContent(
+//                    "<h1>This is actual message embedded in HTML tags by "+name+ " : "+msg+"</h1>",
+//                    "text/html");
+            message.setText(msg);
             transport.sendMessage(message, message.getAllRecipients());
 
         } catch (MessagingException e) {
@@ -75,7 +75,7 @@ public class Mailer {
 
 
     // To send a mail just call this method with classname because it is a static method e.g. Mailer.send("to","subject","message");
-    public static void send(String to,String subject,String msg, String name, String url) throws UnsupportedEncodingException{
+    public static void sendMessageWithFile(String to,String subject,String msg, String name, String url) throws UnsupportedEncodingException{
 
 
         try {
@@ -107,6 +107,14 @@ public class Mailer {
 
             System.out.println(e);
         }
+    }
+
+    public static void sendHtml(String to,String subject,String msg, String name, String html) {
+
+    }
+
+    public static void sendOnlyFile(String to,String subject,String msg, String name, String html) {
+
     }
 }
 
