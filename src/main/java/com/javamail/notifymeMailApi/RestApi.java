@@ -36,7 +36,7 @@ public class RestApi {
             @RequestParam("html") String html,
             @RequestParam("name") String name
     ) {
-        Mailer.sendHtml(recipient, subject, html, name);
+        Mailer.sendHtml(recipient, subject, name, html);
         return true;
 
     }
@@ -69,5 +69,6 @@ public class RestApi {
         Mailer.sendOnlyFile(recipient, subject, name, url);
         return true;
     }
+
 }
 
