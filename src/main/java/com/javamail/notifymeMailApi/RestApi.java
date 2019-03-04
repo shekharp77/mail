@@ -12,7 +12,7 @@ public class RestApi {
 
     @CrossOrigin
     @RequestMapping(value ="/sendmail", method = RequestMethod.POST, produces = "application/json")
-    public boolean sendmail(
+    public boolean sendMessage(
             @RequestParam("recipient") String recipient,
             @RequestParam("sub") String subject,
             @RequestParam("msg") String msg,
@@ -27,5 +27,11 @@ public class RestApi {
         }
         return true;
     }
+
+    //public boolean sendHtml(){}
+
+   // public boolean sendMessageWithFile() {}
+
+    //public boolean sendFile(){}
 }
 
