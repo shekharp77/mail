@@ -19,7 +19,7 @@ public class RestApi {
             @RequestParam("name") String name
     ) {
         try {
-            Mailer.send(recipient, subject, msg, name);
+            Mailer.sendMessage(recipient, subject, msg, name);
         } catch (UnsupportedEncodingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
