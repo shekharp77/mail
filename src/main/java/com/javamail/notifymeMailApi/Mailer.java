@@ -127,7 +127,39 @@ public class Mailer {
         }
     }
 
-    public static void sendOnlyFile(String to,String subject,String msg, String name, String html) {
+    public static void sendOnlyFile(String to,String subject,String name, String url) {
+
+        try {
+            System.out.println("**************************************************");
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(user,name));
+            message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
+            message.setSubject(subject);
+//            message.setText(msg);
+            Multipart multipart = new MimeMultipart();
+
+            // Part two is attachment
+            BodyPart messageBodyPart = new MimeBodyPart();
+            String filename = url;
+            DataSource source = new FileDataSource(filename);
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName(filename);
+            multipart.addBodyPart(messageBodyPart);
+
+
+            // Send the complete message parts
+            message.setContent(multipart);
+            transport.sendMessage(message, message.getAllRecipients());
+
+            System.out.println("*****************************Done**************************");
+
+        } catch (MessagingException e) {
+
+
+            System.out.println(e);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
     }
 }
