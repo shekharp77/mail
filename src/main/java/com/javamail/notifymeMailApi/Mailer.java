@@ -18,15 +18,14 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class mailer {
-    static String user;
+public class Mailer {
+    static String user = "hashedin.notify@gmail.com";
+    static String pass = "Hasher@123";
     static Transport transport;
     static Session session;
 
     //Connecting to Server
-    public static void connect(String username, String pass) throws MessagingException{
-        user = username;
-
+    public static void connect() throws MessagingException{
         java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
         //1st step) Get the session object
         Properties props = new Properties();
