@@ -109,7 +109,7 @@ public class Mailer {
         }
     }
 
-    public static void sendHtml(String to,String subject,String msg, String name, String htmltemplate) {
+    public static void sendHtml(String to,String subject, String name, String htmltemplate) {
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user,name));

@@ -30,7 +30,16 @@ public class RestApi {
 
     @CrossOrigin
     @RequestMapping(value ="/sendmail/html", method = RequestMethod.POST, produces = "application/json")
-    public boolean sendHtml(){}
+    public boolean sendHtml(
+            @RequestParam("recipient") String recipient,
+            @RequestParam("sub") String subject,
+            @RequestParam("html") String html,
+            @RequestParam("name") String name
+    ) {
+        Mailer.sendHtml(recipient, subject, html, name);
+        return true;
+
+    }
 
     @CrossOrigin
     @RequestMapping(value ="/sendmail/message/file", method = RequestMethod.POST, produces = "application/json")
