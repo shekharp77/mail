@@ -72,5 +72,6 @@ public class RestApi {
         Mailer.sendOnlyFile(recipient, subject, name, file);
         return true;
     }
+
 }
 
